@@ -1,0 +1,15 @@
+name: Label Gate Wrapper
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, labeled, unlabeled]
+
+jobs:
+  trigger-label-gate:
+    name: Trigger Organization Label Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call org-wide label gate
+        uses: Mert-s-LUNA-INC/.github/.github/workflows/label-gate.yml@main
+        with:
+          READY_LABEL: 'ready-for-review'
